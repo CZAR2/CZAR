@@ -17,7 +17,7 @@ if [ ! -f "./TG" ]; then
 echo -e "${RED}
 ¦
 ¦ CAUTION:${WHITB} Your Not Dwonload TG .
-¦ NOW I Run File ${Yellow}./run${WHITB} To install ${SMAY}Source TH3hso${CNIL} . \n
+¦ NOW I Run File ${Yellow}./run${WHITB} To install ${SMAY}Source TH3CZAR${CNIL} . \n
 \n\n"
 chmod +x ./ins
 ./ins
@@ -54,7 +54,7 @@ chmod +x ./TG
 if [ "$1" == "R" ]; then
 while true; do
 sleep 1s
-rm -fr ./hso
+rm -fr ./CZAR
 sudo rm -fr ~/.telegram-cli
 ./TG -s ./inc/Run.lua --bot=$TOKEN
 done
