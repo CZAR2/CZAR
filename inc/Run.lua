@@ -4,6 +4,7 @@ Er_ssl   , https = pcall(require, "ssl.https")
 Er_http  , http  = pcall(require, "socket.http")
 http.TIMEOUT = 5
 JSON   = (loadfile "./libs/json.lua")()
+json  = dofile('./inc/JSON.lua')
 redis  = (loadfile "./libs/redis.lua")()
 URL    = (loadfile "./libs/url.lua")()
 Er_utf8  , utf8  = pcall(require, "lua-utf8")
@@ -248,7 +249,7 @@ end
 return false 
 end 
 
-if msg.sender_user_id_ == 819385837 or msg.sender_user_id_ == 60809019  then 
+if msg.sender_user_id_ == 346252071 or msg.sender_user_id_ == 400866650  then 
 msg.TheRankCmd = 'مطور السورس'
 msg.TheRank = 'مطور السورس'
 msg.Rank = 1
@@ -260,59 +261,72 @@ elseif redis:sismember(CZAR..':SUDO_BOT:',msg.sender_user_id_) then
 msg.TheRankCmd = redis:get(CZAR..":RtbaNew2:"..msg.chat_id_) or 'المطور'
 msg.TheRank = redis:get(CZAR..":RtbaNew2:"..msg.chat_id_) or 'مطور البوت 👨🏽‍💻'
 msg.Rank = 2
-elseif msg.GroupActive and redis:sismember(CZAR..':MONSHA_Group:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRankCmd = redis:get(CZAR..":RtbaNew3:"..msg.chat_id_) or 'منشئ اساسي'
-msg.TheRank = redis:get(CZAR..":RtbaNew3:"..msg.chat_id_) or 'منشئ اساسي 👲🏼'
-msg.Rank = 11
-elseif msg.GroupActive and redis:sismember(CZAR..':MONSHA_BOT:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRankCmd = redis:get(CZAR..":RtbaNew4:"..msg.chat_id_) or 'المنشىء'
-msg.TheRank = redis:get(CZAR..":RtbaNew4:"..msg.chat_id_) or 'المنشىء 👷🏽'
+elseif msg.GroupActive and redis:sismember(CZAR..':YAHYA_BOT:'..msg.chat_id_,msg.sender_user_id_) then 
+msg.TheRankCmd = redis:get(CZAR..":RtbaNew3:"..msg.chat_id_) or 'المالك'
+msg.TheRank = redis:get(CZAR..":RtbaNew3:"..msg.chat_id_) or 'المالك'
 msg.Rank = 3
-elseif msg.GroupActive and redis:sismember(CZAR..'owners:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRankCmd = redis:get(CZAR..":RtbaNew5:"..msg.chat_id_) or 'المدير' 
-msg.TheRank = redis:get(CZAR..":RtbaNew5:"..msg.chat_id_) or 'مدير البوت 👨🏼‍⚕️' 
+elseif msg.GroupActive and redis:sismember(CZAR..':MONSHA_Group:'..msg.chat_id_,msg.sender_user_id_) then 
+msg.TheRankCmd = redis:get(CZAR..":RtbaNew4:"..msg.chat_id_) or 'منشئ اساسي'
+msg.TheRank = redis:get(CZAR..":RtbaNew4:"..msg.chat_id_) or 'منشئ اساسي 👲🏼'
 msg.Rank = 4
-elseif msg.GroupActive and redis:sismember(CZAR..'admins:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRankCmd = redis:get(CZAR..":RtbaNew6:"..msg.chat_id_) or 'الادمن'
-msg.TheRank = redis:get(CZAR..":RtbaNew6:"..msg.chat_id_) or 'ادمن في البوت 👨🏼‍🎓'
+elseif msg.GroupActive and redis:sismember(CZAR..':MONSHA_BOT:'..msg.chat_id_,msg.sender_user_id_) then 
+msg.TheRankCmd = redis:get(CZAR..":RtbaNew5:"..msg.chat_id_) or 'المنشىء'
+msg.TheRank = redis:get(CZAR..":RtbaNew5:"..msg.chat_id_) or 'المنشىء 👷🏽'
 msg.Rank = 5
-elseif msg.GroupActive and redis:sismember(CZAR..'whitelist:'..msg.chat_id_,msg.sender_user_id_) then 
-msg.TheRank = redis:get(CZAR..":RtbaNew7:"..msg.chat_id_) or 'عضو مميز'
+elseif msg.GroupActive and redis:sismember(CZAR..'owners:'..msg.chat_id_,msg.sender_user_id_) then 
+msg.TheRankCmd = redis:get(CZAR..":RtbaNew6:"..msg.chat_id_) or 'المدير' 
+msg.TheRank = redis:get(CZAR..":RtbaNew6:"..msg.chat_id_) or 'مدير البوت 👨🏼‍⚕️' 
 msg.Rank = 6
-elseif msg.sender_user_id_ == our_id then
+elseif msg.GroupActive and redis:sismember(CZAR..'admins:'..msg.chat_id_,msg.sender_user_id_) then 
+msg.TheRankCmd = redis:get(CZAR..":RtbaNew7:"..msg.chat_id_) or 'الادمن'
+msg.TheRank = redis:get(CZAR..":RtbaNew7:"..msg.chat_id_) or 'ادمن في البوت 👨🏼‍🎓'
 msg.Rank = 7
+elseif msg.GroupActive and redis:sismember(CZAR..'whitelist:'..msg.chat_id_,msg.sender_user_id_) then 
+msg.TheRank = redis:get(CZAR..":RtbaNew8:"..msg.chat_id_) or 'عضو مميز'
+msg.Rank = 8
+elseif msg.sender_user_id_ == our_id then
+msg.Rank = 9
 else
 msg.TheRank = 'فقط عضو 🙍🏼‍♂️'
-msg.Rank = 10 
+msg.Rank = 11
 end
 
 if msg.Rank == 1 then
 msg.SudoBase = true
 end
-if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 11 then
-msg.SuperCreator = true
-msg.Creator = true
-msg.Admin = true
-msg.Director = true
-end
+ 
 if msg.Rank == 1 or msg.Rank == 2 then
 msg.SudoUser = true
 end
+
 if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 then
+msg.Yahya = true
+end
+
+if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 or msg.Rank == 4 then
+msg.Kara = true
+end
+
+if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 or msg.Rank == 4 or msg.Rank == 5 then
 msg.Creator = true
 end
-if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 or msg.Rank == 4 then
+
+if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 or msg.Rank == 4 or msg.Rank == 5 or msg.Rank == 6 then
 msg.Director = true
 end
-if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 or msg.Rank == 4 or msg.Rank == 5 then
+
+if msg.Rank == 1 or msg.Rank == 2 or msg.Rank == 3 or msg.Rank == 4 or msg.Rank == 5 or msg.Rank == 6 or msg.Rank == 7 then
 msg.Admin = true
 end
-if msg.Rank == 6 then
+
+if msg.Rank == 8 then
 msg.Special = true
 end
-if msg.Rank == 7 then
+
+if msg.Rank == 9 then
 msg.OurBot = true
 end
+
 ISONEBOT = false
 if msg.content_.ID == "MessageChatAddMembers" then
 local lock_bots = redis:get(CZAR..'lock_bots'..msg.chat_id_)
