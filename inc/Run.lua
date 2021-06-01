@@ -671,6 +671,12 @@ redis:hset(CZAR..'username:'..ID,'username',user)
 redis:sadd(CZAR..':MONSHA_BOT:'..k,ID)
 end
 end
+if IDS.yahya then
+for user,ID in pairs(IDS.Creator) do
+redis:hset(CZAR..'username:'..ID,'username',user)
+redis:sadd(CZAR..':YAHYA_BO:'..k,ID)
+end
+end
 if IDS.Owner then
 for user,ID in pairs(IDS.Owner) do
 redis:hset(CZAR..'username:'..ID,'username',user)

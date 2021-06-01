@@ -292,7 +292,7 @@ local url , res = https.request(ApiToken..'/getChatAdministrators?chat_id='..msg
 local get = JSON.decode(url)
 for k,v in pairs(get.result) do
 if v.status == "creator" and v.user.first_name ~= "" then
-return sendMsg(msg.chat_id_,msg.id_,"المالك :\n["..v.user.first_name.."](t.me/"..(v.user.username or "TH3BS"))
+return sendMsg(msg.chat_id_,msg.id_,"المالك :\n["..v.user.first_name.."](t.me/"..(v.user.username or "TH1CZAR"))
 end
 end
 
@@ -310,7 +310,7 @@ mmmmm = arg.UserName:gsub("@","")
 sendMsg(arg.ChatID,arg.MsgID,"المالك :\n["..data.title_.."](t.me/"..mmmmm..")")
 end,{ChatID=msg.chat_id_,MsgID=msg.id_,UserName=info.username})
 else
-sendMsg(msg.chat_id_,msg.id_,'المالك :\n['..info.username..'](t.me/TH3BS)  \n')
+sendMsg(msg.chat_id_,msg.id_,'المالك :\n['..info.username..'](t.me/TH1CZAR)  \n')
 end
 
 break
@@ -392,6 +392,8 @@ elseif redis:sismember(CZAR..':SUDO_BOT:',UserID) then
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك تقييد المطور\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_BOT:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك تقييد المنشئ\n🛠") 
+elseif redis:sismember(CZAR..':YAHYA_BOT:'..ChatID,UserID) then 
+return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* انه مالك  الكروب\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_Group:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك تقييد المنشئ الاساسي\n🛠") 
 elseif redis:sismember(CZAR..'owners:'..arg.ChatID,UserID) then 
@@ -435,6 +437,8 @@ elseif redis:sismember(CZAR..':MONSHA_BOT:'..arg.ChatID,UserID) then
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك تقييد المنشئ\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_Group:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك تقييد المنشئ الاساسي\n🛠") 
+elseif redis:sismember(CZAR..':YAHYA_BOT:'..ChatID,UserID) then 
+return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* انه مالك  الكروب\n🛠") 
 elseif redis:sismember(CZAR..'owners:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك تقييد المدير\n🛠") 
 elseif redis:sismember(CZAR..'admins:'..arg.ChatID,UserID) then 
@@ -470,6 +474,8 @@ elseif redis:sismember(CZAR..':SUDO_BOT:',UserID) then
 return sendMsg(msg.chat_id_,msg.id_,"⌁*︙* لا يمكنك تقييد المطور\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_BOT:'..msg.chat_id_,UserID) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁*︙* لا يمكنك تقييد المنشئ\n🛠") 
+elseif redis:sismember(CZAR..':YAHYA_BOT:'..ChatID,UserID) then 
+return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* انه مالك  الكروب\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_Group:'..msg.chat_id_,UserID) then 
 return sendMsg(msg.chat_id_,msg.id_,"⌁*︙* لا يمكنك نقييد المنشئ الاساسي\n🛠") 
 elseif redis:sismember(CZAR..'owners:'..msg.chat_id_,UserID) then 
@@ -723,7 +729,7 @@ return false
 end
 
 if (MsgText[1] == "رفع منشى" or MsgText[1] == "رفع منشئ") then
-if not msg.SuperCreator then return "⌁︙ هذا الامر يخص {المطور,المطور الاساسي} فقط  \n" end
+if not msg.Creator then return "⌁︙ هذا الامر يخص {المطور,المطور الاساسي} فقط  \n" end
 if not MsgText[2] and msg.reply_id then
 GetMsgInfo(msg.chat_id_,msg.reply_id,function(arg,data)
 if not data.sender_user_id_ then return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* عذرا هذا العضو ليس موجود ضمن المجموعات \n❕") end
@@ -1016,6 +1022,8 @@ elseif redis:sismember(CZAR..':SUDO_BOT:',UserID) then
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك طرد المطور\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_BOT:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك طرد المنشئ\n🛠") 
+elseif redis:sismember(CZAR..':YAHYA_BOT:'..ChatID,UserID) then 
+return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* انه مالك  الكروب\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_Group:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك طرد المنشئ الاساسي\n🛠") 
 elseif redis:sismember(CZAR..'owners:'..arg.ChatID,UserID) then 
@@ -1055,6 +1063,8 @@ elseif redis:sismember(CZAR..':SUDO_BOT:',UserID) then
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك طرد المطور\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_BOT:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك طرد المنشئ\n🛠") 
+elseif redis:sismember(CZAR..':YAHYA_BOT:'..ChatID,UserID) then 
+return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* انه مالك  الكروب\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_Group:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك طرد المنشئ الاساسي\n🛠") 
 elseif redis:sismember(CZAR..'owners:'..arg.ChatID,UserID) then 
@@ -1099,7 +1109,9 @@ return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك حظر مطور ا
 elseif redis:sismember(CZAR..':SUDO_BOT:',UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك حظر المطور\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_BOT:'..arg.ChatID,UserID) then 
-return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك حظر المنشئ\n🛠") 
+return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك حظر المنشئ\n🛠")
+elseif redis:sismember(CZAR..':YAHYA_BOT:'..ChatID,UserID) then 
+return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* انه مالك  الكروب\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_Group:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك حظر المنشئ الاساسي\n🛠") 
 elseif redis:sismember(CZAR..'owners:'..arg.ChatID,UserID) then 
@@ -1151,6 +1163,8 @@ elseif redis:sismember(CZAR..':MONSHA_BOT:'..arg.ChatID,UserID) then
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك حظر المنشئ\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_Group:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك حظر المنشئ الاساسي\n🛠") 
+elseif redis:sismember(CZAR..':YAHYA_BOT:'..ChatID,UserID) then 
+return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* انه مالك  الكروب\n🛠") 
 elseif redis:sismember(CZAR..'owners:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك حظر المدير\n🛠") 
 elseif redis:sismember(CZAR..'admins:'..arg.ChatID,UserID) then 
@@ -1334,6 +1348,8 @@ elseif redis:sismember(CZAR..':SUDO_BOT:',UserID) then
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك كتم المطور\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_BOT:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك كتم المنشئ\n🛠") 
+elseif redis:sismember(CZAR..':YAHYA_BOT:'..ChatID,UserID) then 
+return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* انه مالك  الكروب\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_Group:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك كتم المنشئ الاساسي\n🛠") 
 elseif redis:sismember(CZAR..'owners:'..arg.ChatID,UserID) then 
@@ -1373,6 +1389,8 @@ elseif redis:sismember(CZAR..':SUDO_BOT:',UserID) then
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك كتم المطور\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_BOT:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك كتم المنشئ\n🛠") 
+elseif redis:sismember(CZAR..':YAHYA_BOT:'..ChatID,UserID) then 
+return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* انه مالك  الكروب\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_Group:'..arg.ChatID,UserID) then 
 return sendMsg(arg.ChatID,arg.MsgID,"⌁*︙* لا يمكنك كتم المنشئ الاساسي\n🛠") 
 elseif redis:sismember(CZAR..'owners:'..arg.ChatID,UserID) then 
@@ -1554,7 +1572,7 @@ redis:setex(CZAR..'rulse:witting'..msg.chat_id_..msg.sender_user_id_,300,true)
 return '⌁︙ حسننا عزيزي  \n⌁︙ الان ارسل القوانين  للمجموعه 🍃'
 end
 
-if MsgText[1] == "وضع قناه الاشتراك" then
+if MsgText[1] == "setch" then
 if not msg.SudoUser then return "⌁︙ هذا الامر يخص {,المطور} فقط  \n" end
 redis:setex(CZAR..'rulse:Ch'..msg.chat_id_..msg.sender_user_id_,300,true)
 return '⌁︙ حسننا عزيزي  \n⌁︙ الان ارسل القناة 🍃'
@@ -2347,7 +2365,7 @@ return "⌁*︙* تـم مـسـح { *"..addbannds.." *} من قائمه الع�
 end 
 
 if MsgText[1] == "رفع منشئ اساسي" or MsgText[1] == "رفع منشى اساسي" then
-if not msg.SudoUser then return "⌁︙ هذا الامر يخص {المطور} فقط  \n" end
+if not msg.Yahya then return "⌁︙ هذا الامر يخص {المطور} فقط  \n" end
 
 if not MsgText[2] and msg.reply_id then 
 GetMsgInfo(msg.chat_id_,msg.reply_id,function(arg,data)
@@ -2476,7 +2494,7 @@ end
 end,{ChatID=msg.chat_id_,MsgID=msg.id_,UserName=MsgText[2]})
 end 
 if MsgText[2] and MsgText[2]:match('^%d+$') then 
-GetUserID(MsgText[2],action_by_id,{msg=msg,cmd="YAHYA2"}) 
+GetUserID(MsgText[2],action_by_id,{msg=msg,cmd="yahya2"}) 
 end
 return false
 end
@@ -3407,14 +3425,14 @@ end
 if (MsgText[1]== "ايدي" or MsgText[1]=="ايدي ⌁") and msg.type == "pv" then return  "\n"..msg.sender_user_id_.."\n"  end
 
 if MsgText[1]== "قناة السورس ⌁" and msg.type == "pv" then
-local inline = {{{text="قنآهہ‏‏ آلسـورس : الـزعـيـم 🍃",url="t.me/th3bs"}}}
-send_key(msg.sender_user_id_,'  [قناة السورس : سيزر](t.me/th3bs)',nil,inline,msg.id_)
+local inline = {{{text="قنآهہ‏‏ آلسـورس : سيزر🍃",url="t.me/TH1CZAR"}}}
+send_key(msg.sender_user_id_,'  [قناة السورس : سيزر](t.me/TH1CZAR)',nil,inline,msg.id_)
 return false
 end
 
 if (MsgText[1]== "الاحصائيات ⌁" or MsgText[1]=="الاحصائيات") then
 if not msg.SudoBase then return"⌁︙ هذا الامر يخص {المطور الاساسي} فقط  \n" end
-return 'الاحصائيات : ⌁ \n\n👥*︙* عدد المجموعات المفعله : '..redis:scard(CZAR..'group:ids')..'\n⌁*︙* عدد المشتركين في البوت : '..redis:scard(CZAR..'users')..'\n⌁'
+return 'الاحصائيات : ⌁ \n\n⌁*︙* عدد المجموعات المفعله : '..redis:scard(CZAR..'group:ids')..'\n⌁*︙* عدد المشتركين في البوت : '..redis:scard(CZAR..'users')..'\n⌁'
 end
 ---------------[End Function data] -----------------------
 if MsgText[1]=="اضف رد عام" or MsgText[1]=="اضف رد عام ⌁" then
@@ -4012,7 +4030,7 @@ if MsgText[1] == "سورس" or MsgText[1]=="السورس" then
 return [[
 Welcome To Source CZAR 
 
-⌁︙ [Source Channel](https://t.me/th3bs)
+⌁︙ [Source Channel](https://t.me/TH1CZAR)
 
 ⌁︙ [DEV](https://t.me/AA_B1)
 
@@ -4099,13 +4117,9 @@ end
 getUser(msg.sender_user_id_,dl_username)
 end
 
-if Text == "تفعيل الاشتراك الاجباري" and msg.SudoUser then
+if Text == "join on" and msg.SudoUser then
 redis:set(CZAR..'joinchnl',true)
-sendMsg(msg.chat_id_,msg.id_,'تم تفعيل الاشتراك')
-end
-if Text == "تعطيل الاشتراك الاجباري" and msg.SudoUser then
-redis:del(CZAR..'joinchnl',true)
-sendMsg(msg.chat_id_,msg.id_,'تم تعطيل الاشتراك')
+sendMsg(msg.chat_id_,msg.id_,'on')
 end
 end
 
@@ -6489,6 +6503,8 @@ CZAR = {
 "^(الأداريين)$",
 "^(الاداريين)$",
 "^(الادارين)$",
+"^(رفع مالك)$",
+"^(تنزيل مالك)$",
 
 "^(تنزيل الكل)$",
 "^(تقييد)$",
@@ -6600,7 +6616,6 @@ CZAR = {
 "^(اذاعه)$",
 "^(اذاعه عام)$",
 "^(اذاعه خاص)$",
-"^(وضع قناه الاشتراك)$", 
 "^(اذاعه عام بالتوجيه)$",
 "^(اذاعه عام بالتوجيه ⌁)$", 
 "^(اذاعه خاص ⌁)$", 
@@ -6662,6 +6677,10 @@ CZAR = {
 "^(تفعيل التنظيف التلقائي)$", 
 "^(تعطيل التنظيف التلقائي)$", 
 
+"^(تفعيل الاشتراك الاجباري)$", 
+"^(تعطيل الاشتراك الاجباري)$", 
+"^(تغيير الاشتراك الاجباري)$", 
+"^(الاشتراك الاجباري)$", 
 "^(ادفرني)$", 
 "^(مغادره)$", 
 "^(قائمه الاوامر)$", 

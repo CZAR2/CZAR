@@ -1476,15 +1476,15 @@ GetFullChat(msg.chat_id_,function(arg,data)
 local GroupUsers = tonumber(redis:get(CZAR..':addnumberusers') or 0)
 local Groupcount = tonumber(data.member_count_)
 if GroupUsers  >= Groupcount and not arg.SudoBase then
-return sendMsg(arg.chat_id_,arg.id_,'🚸*︙* لآ يمـگنني تفعيل آلبوت في آلمـجمـوعهہ‏ يجب آن يگون آگثر مـن *【'..GroupUsers..'】* عضـو ⌁')
+return sendMsg(arg.chat_id_,arg.id_,'⌁*︙* لآ يمـگنني تفعيل آلبوت في آلمـجمـوعهہ‏ يجب آن يگون آگثر مـن *【'..GroupUsers..'】* عضـو ⌁')
 end
 if data.channel_ and data.channel_.status_.ID  == "ChatMemberStatusMember" then
-return sendMsg(arg.chat_id_,arg.id_,'⌁*︙* عذرا البوت ليس ادمن  في المجموعه ♨️\n🔙*︙* يرجى رفعه ادمن لتتمكن من تفعيل البوت ✓️')
+return sendMsg(arg.chat_id_,arg.id_,'⌁*︙* عذرا البوت ليس ادمن  في المجموعه \n⌁*︙* يرجى رفعه ادمن لتتمكن من تفعيل البوت ✓️')
 end
 if arg.lock_servicez then 
-sendMsg(arg.chat_id_,arg.id_,'📬︙ تـم تـفـعـيـل الـمـجـمـوعـه ✓️ \n👨🏽‍🔧︙ وتم رفع جمـيع آلآدمـنيهہ‏‏‏ آلگروب بآلبوت \n⌁︙ بواسطه ⋙「 '..NameUser..' 」 \n')
+sendMsg(arg.chat_id_,arg.id_,'⌁︙ تـم تـفـعـيـل الـمـجـمـوعـه ✓️ \n⌁︙ وتم رفع جمـيع آلآدمـنيهہ‏‏‏ آلگروب بآلبوت \n⌁︙ بواسطه ⋙「 '..NameUser..' 」 \n')
 else
-sendMsg(arg.chat_id_,arg.id_,'📬︙ تـم تـفـعـيـل آلمـجمـوعهہ‏‏ \n⌁︙ بواسطه ⋙「 '..NameUser..' 」 \n')
+sendMsg(arg.chat_id_,arg.id_,'⌁︙ تـم تـفـعـيـل آلمـجمـوعهہ‏‏ \n⌁︙ بواسطه ⋙「 '..NameUser..' 」 \n')
 end
 
 GetChannelAdministrators(arg.chat_id_,function(arg,data)
@@ -1492,7 +1492,7 @@ for k,v in pairs(data.members_) do
 if data.members_[k].status_.ID == "ChatMemberStatusCreator" then
 GetUserID(v.user_id_,function(arg,data)
 redis:hset(CZAR..'username:'..data.id_,'username', ResolveUserName(data))
-redis:sadd(CZAR..':MONSHA_Group:'..arg.chat_id_,data.id_)
+redis:sadd(CZAR..':YAHYA_BOT:'..arg.chat_id_,data.id_)
 end,{chat_id_=arg.chat_id_})
 elseif arg.lock_servicez and not data.members_[k].bot_info_ and data.members_[k].status_.ID == "ChatMemberStatusEditor" then
 if not redis:sismember(CZAR..'admins:'..arg.chat_id_,v.user_id_) then
@@ -1605,7 +1605,7 @@ return sendMsg(ChatID,MsgID,"⌁*︙* لا يمكنك طرد مطور السور
 elseif redis:sismember(CZAR..':SUDO_BOT:',UserID) then 
 return sendMsg(ChatID,MsgID,"⌁*︙* لا يمكنك طرد المطور\n🛠")
 elseif redis:sismember(CZAR..':YAHYA_BOT:'..ChatID,UserID) then 
-return sendMsg(ChatID,MsgID,"⌁*︙* انه مالك لا يمطنك طرده\n🛠") 
+return sendMsg(ChatID,MsgID,"⌁*︙* انه مالك  الكروب\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_BOT:'..ChatID,UserID) then 
 return sendMsg(ChatID,MsgID,"⌁*︙* لا يمكنك طرد المنشئ\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_Group:'..ChatID,UserID) then 
@@ -1796,6 +1796,8 @@ elseif UserID == SUDO_ID then
 return sendMsg(ChatID,MsgID,"⌁*︙* لا يمكنك طرد المطور الاساسي\n🛠") 
 elseif redis:sismember(CZAR..':SUDO_BOT:',UserID) then 
 return sendMsg(ChatID,MsgID,"⌁*︙* لا يمكنك طرد المطور\n🛠") 
+elseif redis:sismember(CZAR..':YAHYA_BOT:'..ChatID,UserID) then 
+return sendMsg(ChatID,MsgID,"⌁*︙* انه مالك  الكروب\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_BOT:'..ChatID,UserID) then 
 return sendMsg(ChatID,MsgID,"⌁*︙* لا يمكنك طرد المنشئ\n🛠") 
 elseif redis:sismember(CZAR..':MONSHA_Group:'..ChatID,UserID) then 
